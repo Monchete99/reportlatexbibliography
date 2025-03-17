@@ -1,0 +1,69 @@
+\chapter{Team temesheet}
+
+\begin{table}[h]
+    \centering
+    \caption{Example of a table with merged cells and separators inside cells}
+    \renewcommand{\arraystretch}{1.3}  % Увеличивает высоту строк для лучшей читаемости
+    \begin{tabular}{|c|p{8cm}|p{2cm}|}
+        \hline
+        \textbf{Team Member} & \textbf{Task} & \textbf{Time (hours)} \\
+        \hline
+        \multirow{3}{*}{Khadija Belnablia}  
+        & Team meetings  & 9 \\
+        \cline{2-3}
+        & Rover Assembling   & 0,5 \\
+        \cline{2-3}
+        & Camera programming and image transferring & 6 \\
+         \cline{2-3}
+        & Analysis of different cloud platforms & 2 \\
+        \cline{2-3}
+         & \cellcolor{cyan}Total hours &  \cellcolor{cyan} 17,5  \\
+        \hline
+        \multirow{3}{*}{Yassine Ben Salah}  
+        & Team meetings    & 9 \\
+        \cline{2-3}
+        & Rover Assembling   & 0,5 \\
+         \cline{2-3}
+       & Camera programming and image transferring & 5 \\
+        \cline{2-3}
+        & Web application development & 20 \\
+         \cline{2-3}
+         & \cellcolor{cyan}Total hours &  \cellcolor{cyan} 34,5  \\
+        \hline
+        \multirow{3}{*}{Ramón Elbal Ruíz}  
+        & Team meetings    & 9 \\
+        \cline{2-3}
+        & Raspberry Pi Configuration & 2  \\
+         \cline{2-3}
+         & Rover Software Development  & 30 \\
+        \cline{2-3}
+         & \cellcolor{cyan}Total hours &  \cellcolor{cyan} 41  \\
+        \hline
+        \multirow{4}{*}{Nadzeya Melnik}  
+         & Team meetings    & 9 \\
+        \cline{2-3}
+         & Organizational tasks    & 3 \\
+        \cline{2-3}
+         & Raspberry Pi Configuration & 2  \\
+         \cline{2-3}
+         & \cellcolor{cyan}Total hours &  \cellcolor{cyan} 15  \\  
+        \hline
+        \multirow{2}{*}{Shibichakaravarthy Senthil}  
+         & Team meetings    & 9 \\
+        \cline{2-3}
+         & Rover Assembling   & 4 \\
+          \cline{2-3}
+         & Code optimization   & 20 \\
+          \cline{2-3}
+         & \cellcolor{cyan}Total hours &  \cellcolor{cyan} 33  \\
+        \hline
+        \multirow{2}{*}{Devarsh Sheladiya}  
+         & Team meetings    & 9 \\
+        \cline{2-3}
+       & Rover Assembling   & 6 \\
+        \cline{2-3}
+         & \cellcolor{cyan}Total hours &  \cellcolor{cyan} 15  \\
+        \hline
+    \end{tabular}
+    \label{tab:merged_cells}
+\end{table}

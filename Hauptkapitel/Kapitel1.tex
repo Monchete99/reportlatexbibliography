@@ -1,0 +1,75 @@
+\chapter{Technologies and tools overview}
+\paragraph{}This part presents an overview of technologies and tools that are used in the project.
+
+\section{4tronix M.A.R.S. Rover}%before 2.1. 
+
+\paragraph{}4tronix M.A.R.S. Rover is the main subject of this project. It was based on real-life NASA's Curiosity rover and has the following stats\cite{rover:assembly}:
+\begin{enumerate}
+  \item 6 Motors. 80 rpm 6V, N20 micro gear motors 
+  \item 4 Servos. MG90S metal gear analog micro servos
+  \item Total number of special PCBs: 30
+  \item Length: 200mm
+  \item Width: 185mm
+  \item Height with Mast: 170mm
+\end{enumerate}
+\paragraph{}The rover is compatible with Raspberry Pi Zero or Microbit. In our case, Raspberry Pi 2 Zero was used. 
+Rover's differential arm and couplers, connected to two rockers, help to maintain the main body’s side-to-side stability as either side encounters uneven terrain. This allows one to drive through a lot of obstacles.
+
+\section{Operational system and software}%between 2. and 2.1
+\paragraph{}Raspberry Pi Zero 2 was installed to control the rover. This is the main reason for using Raspberry Pi OS as an operating system \cite{pi:os}. 
+
+\paragraph{}Raspberry Pi OS is a Debian-based operating system specifically optimized for Raspberry Pi hardware. It is recommended to use for most projects. Moreover, Raspberry Pi OS offers a variety of pre-installed software packages for programming, networking, and system management, making it a robust choice for controlling and managing the rover's functions.\paragraph{} 
+
+Manufacturer provided the library rover.py written in Python. The library consists of functions to manipulate hardware. It also allows easy to utilize ultrasonic distance sensor on rover's most.
+
+\section{MQTT Protocol}%move to communications part
+
+\paragraph{}Message Queuing Telemetry Transport (MQTT) protocol is standardly used on the Internet of Things \cite{mqtt:spec}. The protocol is light-weight and based on the publisher-subscriber model. This offers good scalability and reliable message delivery.\paragraph{}
+
+MQTT architecture has three main parts:
+\begin{enumerate}
+    \item Broker - server that manages message distribution.
+    \item Client - devices that send or receive messages through the broker.
+    \item Topics - special channels on the broker side where clients publish or read data from.
+\end{enumerate}
+\paragraph{}The user and the Rover don’t need to have connectivity towards each other, let alone be on the same network, they need to be able to connect to a broker and subscribe to the same topic.
+
+\paragraph{}Communication with real-life Curiosity Rover occurs in two ways: through satellites orbiting Mars that relay information or via a direct signal from Earth to the rover's high-gain antenna. Small amounts of information or daily commands are transmitted via direct signal from the Earth. However, if a bigger portion of the information, such as images from the rover, should be sent, an intermediary is used.
+
+\paragraph{} Implementation of MQTT simulates the way of sending information via satellite. Under these circumstances, Brocker represents a satellite, clients are the rover itself and an app.
+\section{Technologies for web development}
+\subsection{Express JS}
+\paragraph{}Express.js is a simple and flexible web framework for Node.js that helps developers build web applications and APIs easily. It provides useful features like routing, middleware support, and template engine integration. Since it is lightweight and does not enforce a strict structure, developers can organize their projects as needed. Express.js is designed to handle multiple requests efficiently, making it fast and scalable. Because of its ease of use and powerful capabilities, it is widely used for building modern web applications and backend services \cite{expressJS:guide}.
+
+\subsection{React JS}
+ReactJS is a component-based JavaScript library designed for creating dynamic and interactive user interfaces. Developed and maintained by Facebook, it simplifies the development of single-page applications (SPAs) by focusing on performance and maintainability. ReactJS uses a virtual DOM to optimize rendering and ensure faster updates. It follows a declarative approach to designing UI components, making code more readable and easier to manage. Additionally, its one-way data binding enhances application control, ensuring a predictable and efficient data flow \cite{react:geek}.
+
+\subsection{MongoDB}%sci sourses
+\paragraph{}MongoDB is a modern NoSQL database designed to handle large volumes of unstructured and semi-structured data. The database uses a document-oriented approach, storing information in flexible JSON-like Binary JSON(BSON) documents. This allows developers to manage data more dynamically and efficiently, making it ideal for applications that require scalability and agility \cite{mongodb:doc_1}.
+\paragraph{}IoT devices generate diverse data. MongoDB handles this data efficiently due to its several advantages. Schemaless document storage allows users to store varied data structures without predefined schemas, which is ideal for IoT's complex data. MongoDB offers horizontal scaling and and automatic sharding, making it capable of handling large IoT datasets. Database is optimized for sensor data. All of those features make MongoDB a valuable tool for big data analysis and real-time monitoring in IoT systems \cite{mongodb:iot}. 
+
+\newpage
+\section{DHT22 Sensor}
+
+\paragraph{}DHT22 is a humidity and temperature sensor. The main information about the sensor is represented in a table below:
+
+\begin{table}[ht]
+    \centering
+    \renewcommand{\arraystretch}{1.3} % Optional: Adjusts row height for better readability
+    \begin{tabular}{|p{5cm}|p{7cm}|} % p{} for left-aligned columns
+    \hline
+     \textbf{Power Supply}    & 3.3-6 V DC   \\ \hline
+     \textbf{Output Signal}    & Digital signal via single-bus   \\ \hline
+    \textbf{Sensing Element}    & Polymer capacitor   \\ \hline
+    \textbf{Operating Range}    & Humidity: 0-100\% RH; Temperature: -40~80°C    \\ \hline
+    \textbf{Accuracy}    & Humidity: ±2\% RH (Max ±5\% RH); Temperature: <±0.5°C     \\ \hline
+    \textbf{Resolution or Sensitivity}    & Humidity: 0.1\% RH; Temperature: 0.1°C    \\ \hline
+    \textbf{Repeatability}    & Humidity: ±1\% RH; Temperature: ±0.2°C   \\ \hline
+    \textbf{Humidity Hysteresis}    & ±0.3\% RH   \\ \hline
+    \textbf{Long-Term Stability}    & ±0.5\% RH/year   \\ \hline
+    \textbf{Sensing Period}   & Average: 2s  \\ \hline
+    \textbf{Interchangeability}   & Fully interchangeable  \\ \hline
+    \end{tabular}
+    \caption{Characteristics of DHT22 Sensor}
+    \label{tab:DHT22_charac}
+\end{table}

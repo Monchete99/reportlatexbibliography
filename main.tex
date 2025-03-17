@@ -1,0 +1,205 @@
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% HTWK Leipzig LaTeX Vorlage - Belegarbeit
+%
+% Das Dokument basiert teilweise auf den Vorlagen von :
+% Markus Voerkel
+% https://de.overleaf.com/latex/templates/thesis-template-for-hochschule-fur-technik-wirtschaft-und-kultur-leipzig/nqpftcjmmtts
+%
+% Linda Vogel & Jon Arnt Kårstad
+% https://www.overleaf.com/latex/templates/template-projekt-htwk/mphqwccfvvwy
+%
+% HTWK Logo:
+% https://www.htwk-leipzig.de/hochschule/hochschulkommunikation-marketing/corporate-design
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Veröffentlicht unter CC BY-SA 4.0 - Lizenz
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%
+% Hinweis: Ordner für Abbildungen, PDFs etc. müssen eigenhändig erstellt werden, da die Vorlage bei der Veröffentlichung keine leeren Ordner enthalten kann !
+%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%---------------------------------------
+%	Dokumentenklasse
+%---------------------------------------
+
+\documentclass[
+english,
+toc=flat,
+toc=chapterentrywithdots,
+captions=tableabove,
+listof=entryprefix,
+listof=leveldown,
+fontsize=12pt,
+numbers=noenddot,
+headsepline]
+{scrreprt}
+
+%---------------------------------------
+%	Laden von Paketen
+%---------------------------------------
+
+\usepackage{babel}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{float}
+\usepackage{ragged2e}
+\usepackage{listings}
+\usepackage{subcaption}
+\usepackage{listings}
+\usepackage{verbatim}
+\usepackage{longtable}
+\usepackage{afterpage}
+\usepackage{multirow}
+\usepackage[T1]{fontenc}
+\usepackage[table]{xcolor}
+
+\lstset{
+    language=Bash,        
+    basicstyle=\ttfamily,             % Моноширинный шрифт
+}
+
+\lstdefinestyle{courier12}{
+    language=Python,          % Указываем язык (но без подсветки)
+    basicstyle=\ttfamily\fontsize{12}{14}\selectfont, % Courier 12 pt
+    breaklines=true,          % Перенос строк
+    tabsize=4,                % Размер табуляции
+    commentstyle=,            % ОТКЛЮЧАЕМ стиль комментариев (чтобы они были как основной текст)
+    keywordstyle=,            % ОТКЛЮЧАЕМ стиль ключевых слов
+    stringstyle=,             % ОТКЛЮЧАЕМ стиль строк
+    numbers=none,             % ОТКЛЮЧАЕМ номера строк
+    frame=none                % Убираем рамку
+}
+
+% Geoemetry %
+\usepackage{geometry}
+\geometry{
+	top = 27.5mm,
+	headsep = 5mm,
+	left = 28mm,
+	right = 20mm, 
+	bottom = 25mm,
+	}
+	
+\usepackage[letterspace=150]{microtype}
+\usepackage[onehalfspacing]{setspace}
+	
+% Caption %
+\usepackage[labelfont={bf,sf},font={bf}, labelsep=space, singlelinecheck=off]{caption} 
+
+\captionsetup[figure]{justification=centering,format=plain}
+\captionsetup[table]{justification=raggedright}
+
+% BibLaTeX %
+\usepackage[
+    backend=biber,
+    style=numeric-comp,
+    sorting=none,
+    defernumbers=true
+]{biblatex}
+\addbibresource{References.bib}
+
+\usepackage{csquotes}
+\usepackage{amsmath}
+\usepackage{graphicx}
+
+% Hyperref %
+\usepackage{hyperref}
+\hypersetup{ 
+    colorlinks=true,
+    linkcolor=black,
+    urlcolor=blue,
+    citecolor=black}
+
+%Einfacher Umgang mit Einheiten%
+\usepackage{siunitx}
+\sisetup{
+    locale=UK,
+    per-mode=fraction,
+    group-minimum-digits = 6,
+    group-digits = integer
+}
+
+% Bessere Kompatibilität der Dokumentenklasse mit div. Paketen %
+\usepackage{scrhack}
+
+%---------------------------------------
+%	Weitere Konfigurationen
+%---------------------------------------
+
+%Anpassung der Kopf- und Fusszeile
+\usepackage[autooneside=false]{scrlayer-scrpage}
+\clearpairofpagestyles
+\setkomafont{pageheadfoot}{\footnotesize}
+\ohead{\pagemark}
+\automark{chapter}
+\ihead{\headmark}
+
+%Konfiguration Verzeichnisse
+\BeforeStartingTOC[toc]{\singlespacing} 
+\BeforeStartingTOC[lot]{\renewcommand\autodot{:}}
+\BeforeStartingTOC[lof]{\renewcommand\autodot{:}}
+
+%Anpassung der Kapitelüberschrift
+\renewcommand*{\chapterpagestyle}{scrheadings}
+\RedeclareSectionCommand[%
+beforeskip=0pt,
+afterskip=16pt,
+afterindent = false,
+font=\LARGE]{chapter}
+
+%Verhindere Zeilenumbruch innerhalb \cite[Seite]{quelle}
+\renewcommand*{\prenotedelim}{\addnbspace}
+\renewcommand*{\postnotedelim}{\addcomma\addnbspace}
+\renewcommand*{\multicitedelim}{\addcomma\addnbspace}
+\renewcommand*{\extpostnotedelim}{\addnbspace}
+\renewcommand*{\volcitedelim}{\addcomma\addnbspace}
+\renewcommand{\arraystretch}{1.3}
+
+\input{MeineDaten} 
+
+%\input{Konfigurationsdateien/Anhangsverzeichnis}
+
+
+%Ebenen im Inhaltsverzeichnis
+\newcommand{\nocontentsline}[3]{}
+\newcommand{\tocless}[2]{\bgroup\let\addcontentsline=\nocontentsline#1{#2}\egroup}
+\KOMAoptions{toc=indented}
+
+%Verwendung normaler "Gänsefüßchen"
+\MakeOuterQuote{"}
+
+%Kein Einzug nach Absatz
+\setlength\parindent{0pt}
+
+%-------------------------------------------------
+%	Beginn des Dokuments und Einbinden der Kapitel
+%-------------------------------------------------
+
+\begin{document}
+
+\input{Konfigurationsdateien/Titelseite}
+%\input{Konfigurationsdateien/Erklaerung}
+
+\tableofcontents
+%\input{Konfigurationsdateien/Abbildungsverzeichnis}
+
+%\input{Hauptkapitel/Kapitel1}
+\input{Hauptkapitel/Kapitel2}
+%\input{Hauptkapitel/Kapitel3}
+%\input{Hauptkapitel/Kapitel4}
+%\input{Hauptkapitel/Kapitel5}
+%\input{Hauptkapitel/Timesheet}
+
+\begin{singlespacing}
+\printbibliography[
+    heading=bibintoc,
+    title=Bibliography
+]
+\end{singlespacing}
+
+%\appendix %Entfernen/Auskommentieren um Anhang zu deaktivieren
+%\input{Anhang} %Entfernen/Auskommentieren um Anhang zu deaktivieren
+
+\end{document}
