@@ -13,7 +13,7 @@ In this chapter, we will elaborate on how the components mentioned in earlier ch
 Using the MQTT protocol, the rover and the web application do not need direct connection to interact with each other. Instead, the MQTT broker acts as a middleman that sends the most recent information on each topic to its respective subscribers. Whenever a user connects to the web application, the back-end provides the views defined in the front-end as the visible interface and handles the interactions with the database where our photos are stored and accessed. These interactions are shown in the following chart:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{connectionchart.png}
+    \includegraphics[width=1\linewidth]{Hauptkapitel/Pictures/connectionchart.png}
     \caption{Chart showcasing the different connections between components}
     \label{fig:enter-label}
 \end{figure}
@@ -61,7 +61,7 @@ CMD ["node", "app.js"]
 We then run on the same folder on a terminal the command docker build . -t relr82/iot-project2024-backend. This command creates an image based on the Dockerfile and assigns it the name relr82/iot-project2024-backend. If everything goes well, we should see this on our local Docker Desktop:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=1\linewidth]{dockerdesktop.png}
+    \includegraphics[width=1\linewidth]{Hauptkapitel/Pictures/dockerdesktop.png}
     \caption{Image of the resulting image on Docker Desktop}
     \label{fig:enter-label}
 \end{figure}
@@ -70,7 +70,7 @@ To make it easier to update the image, we created a public online repository in 
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{dockerhub.png}
+    \includegraphics[width=0.5\linewidth]{Hauptkapitel/Pictures/dockerdesktop.png}
     \caption{Docker Hub repository where we push our image}
     \label{fig:enter-label}
 \end{figure}
@@ -134,7 +134,7 @@ networks:
 After creating the stack, we should see two containers being deployed:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{stack.png}
+    \includegraphics[width=0.5\linewidth]{Hauptkapitel/Pictures/stack.png}
     \caption{Stack being deployed on Portainer}
     \label{fig:enter-label}
 \end{figure}
@@ -142,7 +142,7 @@ After creating the stack, we should see two containers being deployed:
 To access the web application, we have to use the URL of our environment and the port we mapped the service to. The following image shows an example in which the web application is not only operational on the cloud but able to communicate with the MongoDB database deployed in our container.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.5\linewidth]{clouddemo.png}
+    \includegraphics[width=0.5\linewidth]{Hauptkapitel/Pictures/clouddemo.png}
     \caption{Demonstration of the web application running and accessing the database}
     \label{fig:enter-label}
 \end{figure}
